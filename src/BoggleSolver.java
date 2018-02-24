@@ -15,7 +15,7 @@ public class BoggleSolver {
     // (You can assume each word in the dictionary contains only the uppercase letters A through Z.)
     public BoggleSolver(String[] dictionary) {
         int n = dictionary.length;
-        foundWords = new ArrayList<>();
+
         searchTries = new TST<>();
         // laad alle woorden uit dictionary in de searchTries
         for (int i = 0; i < n; i++) {
@@ -28,6 +28,7 @@ public class BoggleSolver {
     // keysWithPrefix return Iterable or IllegalArgumentException if null
     public Iterable<String> getAllValidWords(BoggleBoard board) {
         BoggleBoard b = board;
+        foundWords = new ArrayList<>();
         int rows = b.rows();
         int cols = b.cols();
         // start at every posible position
@@ -47,7 +48,7 @@ public class BoggleSolver {
         // if already visited, return
         if (visited[x][y]) return;
 
-        char letter = board.getLetter(x,y);
+        char letter = board.getLetter(x, y);
         String word = prefix;
 
         if (letter == 'Q') {
